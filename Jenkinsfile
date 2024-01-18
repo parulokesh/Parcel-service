@@ -4,7 +4,7 @@ pipeline {
         stage('checkout') {
             steps {
            sh 'rm -rf Parcel-service'
-           sh 'git clone https://github.com/parulokesh/Parcel-service.gitr/'
+           sh 'git clone https://github.com/parulokesh/Parcel-service.git'
             }
          }
         stage('build') {

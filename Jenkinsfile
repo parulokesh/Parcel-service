@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'scp /home/slave4/workspace/parcelservice/target/simple- root@172.31.14.255:/opt/apache-tomcat-8.5.98/webapps/'
+                sh 'scp /home/slave4/workspace/parcelservice/target/simple-parcel-service-app-1.0-SNAPSHOT.jar root@172.31.14.255:/opt/apache-tomcat-8.5.98/webapps/'
     }
 }
     }

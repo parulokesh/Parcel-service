@@ -1,10 +1,10 @@
 pipeline {
-    agent { label 'slave2' }
+    agent { label 'slave4' }
     stages {
         stage('Checkout') {
             steps {
                 sh 'rm -rf Parcel-service'
-                sh 'git clone https://github.com/Harshahd97/Parcel-service.git'
+                sh 'git clone https://github.com/parulokesh/Parcel-service.git'
             }
         }
         stage('Build') {
@@ -21,8 +21,8 @@ pipeline {
          }
         stage('Deploy') {
             steps {
-                sh 'ssh root@172.31.28.191'
-                sh 'scp /home/slave2/workspace/parcel_service_pipeline/target/simple-parcel-service-app-1.0-SNAPSHOT.jar root@172.31.28.191:/opt/apache-tomcat-8.5.98/webapps'
+                sh 'ssh root@172.31.14.255'
+                sh 'scp /home/slave4/workspace/parcelservice/target/simple-parcel-service-app-1.0-SNAPSHOT.jar root@172.31.14.255:/opt/apache-tomcat-8.5.98/webapps'
         }
         }
     } 

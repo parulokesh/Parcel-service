@@ -1,4 +1,4 @@
-ipeline {
+pipeline {
     agent { label 'slave4' }
     stages {
         stage('checkout') {

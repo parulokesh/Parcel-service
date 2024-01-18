@@ -3,8 +3,8 @@ ipeline {
     stages {
         stage('checkout') {
             steps {
-           sh 'rm -rf hello-world-war'
-           sh 'git clone https://github.com/parulokesh/hello-world-war/'
+           sh 'rm -rf Parcel-service'
+           sh 'git clone https://github.com/parulokesh/Parcel-service.gitr/'
             }
          }
         stage('build') {

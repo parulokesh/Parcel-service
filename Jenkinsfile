@@ -15,7 +15,6 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'ssh root@172.31.14.255'
                 sh ' scp /home/slave4/workspace/Parcelservice_feature-2/target/* root@172.31.14.255:/opt/apache-tomcat-8.5.98/webapps/'
     }
 }

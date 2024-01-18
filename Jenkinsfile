@@ -1,22 +1,29 @@
 pipeline {
-    agent { label 'slave4' }
+    agent { label 'slave2' }
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
-           sh 'rm -rf Parcel-service'
-           sh 'git clone https://github.com/parulokesh/Parcel-service.git'
+                sh 'rm -rf Parcel-service'
+                sh 'git clone https://github.com/Harshahd97/Parcel-service.git'
             }
-         }
-        stage('build') {
+        }
+        stage('Build') {
             steps {
                 sh 'mvn --version'
                 sh 'mvn clean install'
-                         }
+            }
         }
-        stage('deploy') {
+        stage('Run Locally') {
+        steps {
+                sh 'java -jar target/simple-parcel-service-app-1.0-SNAPSHOT.jar &'
+                sleep 30
+            }
+         }
+        stage('Deploy') {
             steps {
-                sh 'java -jar /target/simple-parcel-service-app-1.0-SNAPSHOT.jar'
-    }
-}
-    }
+                sh 'ssh root@172.31.28.191'
+                sh 'scp /home/slave2/workspace/parcel_service_pipeline/target/simple-parcel-service-app-1.0-SNAPSHOT.jar root@172.31.28.191:/opt/apache-tomcat-8.5.98/webapps'
+        }
+        }
+    } 
 }
